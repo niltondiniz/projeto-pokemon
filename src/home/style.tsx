@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface Props {
+    color: string;
+}
+
 export const Container = styled.div`
     h1{
         text-align: center;
@@ -15,7 +19,7 @@ export const PokemonList = styled.ul`
     row-gap: 2rem;
 `
 
-export const PokemonStyle = styled.div`
+export const PokemonStyle = styled.div<Props>`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,7 +28,7 @@ export const PokemonStyle = styled.div`
     border-radius: 1rem;
     justify-content: center;
     box-shadow: 5px 5px #999999;
-    background-color: green;
+    background-color: ${p => p.color};
 
     img{
         height: 200px;
@@ -34,5 +38,6 @@ export const PokemonStyle = styled.div`
     span{
         text-align: center;
         margin-top: 1rem;
+        font-weight: bold;
     }
 `

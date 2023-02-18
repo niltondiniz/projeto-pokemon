@@ -1,13 +1,66 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import PokemonEntity from "../home/entities/pokemon-entity";
 import { pokemonLocal } from "../utils/consts";
 import { getPokemonColorByType } from "../utils/pokemon-colors";
-import { CenterAlign, Container, Details, HpText, LeftAlign, PokemonStyle, RightAlign } from "./style";
+import { CenterAlign, Container, Details, HpText, LeftAlign, PokemonStyle, RightAlign, TextItem } from "./style";
 
 export default function PokemonDetails(){
 
-    const [pokemon, setPokemon] = useState<PokemonEntity>(pokemonLocal as PokemonEntity)
+    const [pokemon, setPokemon] = useState<PokemonEntity>()
 
+    const [searchParams] = useSearchParams();
+    console.log('Search Params: ', searchParams.get('pokemon'));
+    
+    useEffect(() => {
+        var data = JSON.parse(searchParams.get('pokemon'));
+        console.log(data);
+        setPokemon(data as PokemonEntity);
+    }, [])
+    
+
+    function getAbilities():JSX.Element[]{
+        var abilities: JSX.Element[] = [];
+
+        for (let i = 0; i < 2; i++) {       
+            if(pokemon.abilities[i]){
+                abilities.push(                
+                    <TextItem><span>{pokemon.abilities[i].name}</span></TextItem>
+                )            
+            }
+        };            
+        return abilities;
+    }
+
+    function getLocations():JSX.Element[]{
+        var locations: JSX.Element[] = [];
+        
+        for (let i = 0; i < 2; i++) {       
+            if(pokemon.locations[i]){
+                console.log(i);
+                locations.push(                
+                    <TextItem><span>{pokemon.locations[i].name}</span></TextItem>
+                )            
+            }
+        };            
+        return locations;
+    }
+
+    function getTypes():JSX.Element[]{
+        var types: JSX.Element[] = [];
+
+        for (let i = 0; i < 2; i++) {   
+            if(pokemon.types[i]){
+                console.log(i);
+                types.push(                
+                    <TextItem><span>{pokemon.types[i].name}</span></TextItem>
+                )            
+            }
+        };            
+        return types;
+    }
+
+    if(pokemon != undefined){
     return (
         <Container color={getPokemonColorByType(pokemon.types[0].name)}>
             <PokemonStyle>
@@ -18,40 +71,29 @@ export default function PokemonDetails(){
                 <Details>
                     <LeftAlign>
                         <h4>Habilidades</h4>
-                        {
-                            pokemon.abilities.map(ability => {
-                                return (
-                                    <div>                                        
-                                        <p><span>{ability.name}</span></p>
-                                    </div>
-                                )
-                            })
-                        }
+
+                        <div>
+                            {getAbilities()}
+                        </div>
+
                     </LeftAlign>
                     <CenterAlign>
                         <h4>Localização</h4>
-                        {
-                            <div>                                        
-                                <p><span>{pokemon.locations[0].name}</span></p>
-                                <p><span>{pokemon.locations[1].name}</span></p>
-                                <p><span>{pokemon.locations.length > 2 ? '...' : ''}</span></p>
-                            </div>
-                        }
+                        <div>
+                            {getLocations()}
+                        </div>
                     </CenterAlign>
                     <RightAlign>
                         <h4>Tipo</h4>
-                        {
-                            pokemon.types.map(type => {
-                                return (
-                                    <div>                                        
-                                        <p><span>{type.name}</span></p>
-                                    </div>
-                                )
-                            })
-                        }
+                        <div>
+                            {getTypes()}
+                        </div>
                     </RightAlign>
                 </Details>
             </PokemonStyle>
         </Container>
     )
+    }else{
+        <div></div>
+    }
 }

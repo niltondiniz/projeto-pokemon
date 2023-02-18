@@ -5,20 +5,17 @@ interface Props{
 }
 
 export const Container = styled.div<Props>`
+    height: 100vh;
+    width: 100vw;
     display: flex;
-    align-items: center;   
-    justify-content: center; 
-    background-color: ${c => c.color};
-    height: 650px;    
+    justify-content: center;
+    align-items: center;
+    background-color: ${c => c.color};      
     
     h1{
         text-align: center;
         margin: 4rem;
-    }
-
-    p {
-        line-height: 3px;
-    }
+    }    
 `
 
 export const HpText = styled.span`
@@ -26,12 +23,16 @@ export const HpText = styled.span`
     font-weight: 700;
 `
 
+export const TextItem = styled.p`
+    line-height: 1px;
+`
+
 export const PokemonStyle = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 300px;    
-    height: 75%;
+    width: 300px;     
+    height: 450px;   
     border-radius: 1rem;
     border: 1px solid black;    
     justify-content: center;    
@@ -41,7 +42,8 @@ export const PokemonStyle = styled.div`
     img{
         height: 150px;
         margin-right: 2rem;
-        margin-top: 2rem;        
+        margin-top: 2rem;     
+        padding-right: 8rem;   
     }
 
     hr{

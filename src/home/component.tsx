@@ -64,7 +64,7 @@ export default function Pokemon(props:any){
         return (
             <Container>
                 <PokemonStyle color={getPokemonColorByType(pokemon.types[0].name)}>
-                    <Link to={`/pokemon-details/`}><img src={pokemon.imageUrl} alt={pokemon.name}/></Link>
+                    <Link to={{pathname: '/pokemon-details/', search: `?pokemon=${JSON.stringify(pokemon)}`}}><img src={pokemon.imageUrl} alt={pokemon.name}/></Link>
                     <span>{pokemon.name}</span>
                 </PokemonStyle>
             </Container>

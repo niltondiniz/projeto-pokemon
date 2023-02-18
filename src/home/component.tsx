@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getPokemonColorByType } from "../utils/pokemon-colors";
 import PokemonAbilityEntity from "./entities/pokemon-ability-entity";
 import PokemonEntity from "./entities/pokemon-entity";
@@ -63,7 +64,7 @@ export default function Pokemon(props:any){
         return (
             <Container>
                 <PokemonStyle color={getPokemonColorByType(pokemon.types[0].name)}>
-                    <img src={pokemon.imageUrl} alt={pokemon.name}/>
+                    <Link to={`/pokemon-details/`}><img src={pokemon.imageUrl} alt={pokemon.name}/></Link>
                     <span>{pokemon.name}</span>
                 </PokemonStyle>
             </Container>

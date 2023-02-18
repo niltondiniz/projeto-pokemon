@@ -30,8 +30,7 @@ export default function Home() {
                                 </Pokemon>
                             )
                         })
-                    }
-                    
+                    }                    
                 </PokemonList>
             </div>
         </Container>

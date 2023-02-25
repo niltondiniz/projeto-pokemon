@@ -35,7 +35,7 @@ export const PokemonStyle = styled.div`
     border-radius: 1rem;
     border: 1px solid black;    
     justify-content: center;    
-    background-color: transparent;
+    background-color: #d1b47f;
     padding: 3rem;
 
     img{

@@ -17,8 +17,8 @@ export default function Home() {
     }
 
     useEffect(()=>getPokemons(), [])
-
-    return (
+//Teste
+    return ( 
         <Container>
             <h1>Pokémon</h1>
             <div>

@@ -71,6 +71,10 @@ export const LeftAlign = styled.div`
 `;
 export const CenterAlign = styled.div`
     align-self:center;
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: ellipsis;
+    width: 200px;
 `;
 export const RightAlign = styled.div`
     align-self:flex-end;

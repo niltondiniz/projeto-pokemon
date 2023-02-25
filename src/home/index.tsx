@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Pokemon from "./component";
 import { Container, PokemonStyle, PokemonList } from "./style";
+import React from "react";
 
 export default function Home() {
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Pokemon from "./component";
 import { Container, PokemonStyle, PokemonList } from "./style";
+import React from "react";
 
 export default function Home() {
 
@@ -19,7 +20,7 @@ export default function Home() {
 
     return (
         <Container>
-            <h1>Pokémon</h1>
+            <h1>Pokedex</h1>
             <div>
                 <PokemonList>
                     {

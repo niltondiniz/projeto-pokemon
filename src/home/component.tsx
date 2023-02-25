@@ -4,7 +4,11 @@ import PokemonAbilityEntity from "./entities/pokemon-ability-entity";
 import PokemonEntity from "./entities/pokemon-entity";
 import PokemonLocationEntity from "./entities/pokemon-location-entity";
 import PokemonTypeEntity from "./entities/pokemon-type-entity";
-import { Container, PokemonStyle } from "./style";
+import { Container } from "./style";
+import { PokemonStyle } from "./style";
+import React from "react";
+import { Link } from "react-router-dom";
+
 
 export default function Pokemon(props:any){
     const [pokemon, setPokemon] = useState<PokemonEntity>()
@@ -16,7 +20,7 @@ export default function Pokemon(props:any){
         const response = await fetch(locationUrl);
         const data = await response.json();        
 
-        data.map(location => {
+        data.slice(0,2).map(location => {
             locations.push(new PokemonLocationEntity(location.location_area.name));
         });
         
@@ -30,13 +34,13 @@ export default function Pokemon(props:any){
             if(data.id !== undefined){
                 
                 var pokemonTypes: PokemonTypeEntity[] = [];
-                data.types.map(pokemonType => {
+                data.types.slice(0,2).map(pokemonType => {
                     console.log(pokemonType);
                     pokemonTypes.push(new PokemonTypeEntity(pokemonType.type.name))
                 });
                 
                 var pokemonAbilities: PokemonAbilityEntity[] = [];
-                data.abilities.map(pokemonAbility => {pokemonAbilities.push(new PokemonAbilityEntity(pokemonAbility.ability.name))});
+                data.abilities.slice(0,3).map(pokemonAbility => {pokemonAbilities.push(new PokemonAbilityEntity(pokemonAbility.ability.name))});
 
                 const pokemonLocations = await getPokemonLocations(data.location_area_encounters);
 
@@ -60,7 +64,9 @@ export default function Pokemon(props:any){
         return (
             <Container>
                 <PokemonStyle color={getPokemonColorByType(pokemon.types[0].name)}>
-                    <img src={`${pokemon.imageUrl}`} alt={pokemon.name}/>
+                    <Link to={{pathname:'/pokemon-details/', search:`?pokemon=${JSON.stringify(pokemon)}`}}>
+                        <img src={`${pokemon.imageUrl}`} alt={pokemon.name}/>
+                    </Link>
                     <span>{pokemon.name.toUpperCase()}</span>
                 </PokemonStyle>
             </Container>

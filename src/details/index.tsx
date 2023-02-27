@@ -1,5 +1,5 @@
 
-import PokemonEntity from "../home/entities/pokemon-entity";
+import PokemonEntity from "../pokemon/model/entities/pokemon-entity";
 import { useState, useEffect } from "react";
 import React from "react";
 import { Container, PokemonStyle, HpText, Details, LeftAlign, CenterAlign, RightAlign } from "./style";

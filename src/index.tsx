@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Home from './home'
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Pokemon from './home/component';
+import Pokemon from './home/view/component';
 import PokemonDetails from './details';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import PokemonListController from './home/controller/pokemon-list-controller';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<PokemonListController />} />
       <Route path="/pokemon-details/" element={<PokemonDetails />} />
     </Routes>
   </BrowserRouter>

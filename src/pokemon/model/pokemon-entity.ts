@@ -11,7 +11,7 @@ export default class PokemonEntity{
     hp: number;
     imageUrl: string;
 
-    constructor(id: number, name: string, types: PokemonTypeEntity[], locations: PokemonLocationEntity[], abilities: PokemonAbilityEntity[], hp: number, imageUrl: string){
+    constructor(id: number, name: string, types: PokemonTypeEntity[], locations: PokemonLocationEntity[], abilities: PokemonAbilityEntity[], hp: number){
         this.id = id;
         this.name = name;
         this.types = types;

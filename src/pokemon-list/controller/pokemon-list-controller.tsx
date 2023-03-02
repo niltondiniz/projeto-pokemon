@@ -30,6 +30,6 @@ export default class PokemonListController extends React.Component<Props, State>
     }
 
     render(){
-        return <PokemonListPage pokemonsPromises ={this.state.pokemonPromisses}/>;
+        return <PokemonListPage pokemonsPromises = {this.state.pokemonPromisses}/>;
     }
 }

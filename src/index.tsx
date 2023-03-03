@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import PokemonDetails from './details';
-import Home from './home'
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import PokemonListController from './pokemon-list/controller/pokemon-list-controller';
+import PokemonDetailsController from './details/controller/pokemon-details-controller';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,8 +12,8 @@ const root = ReactDOM.createRoot(
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/pokemon-details/" element={<PokemonDetails />} />
+      <Route path="/" element={<PokemonListController />} />
+      <Route path="/pokemon-details/" element={<PokemonDetailsController />} />
     </Routes>
   </BrowserRouter>
 );

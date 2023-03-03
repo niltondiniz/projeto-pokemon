@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-interface Props{
+interface Props {
     color: string;
 }
 
@@ -10,15 +10,6 @@ export const Container = styled.div`
         margin: 4rem;
     }
 `
-
-export const PokemonList = styled.ul`
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    column-gap: 2rem;
-    row-gap: 2rem;
-`
-
 export const PokemonStyle = styled.div<Props>`
     display: flex;
     flex-direction: column;
